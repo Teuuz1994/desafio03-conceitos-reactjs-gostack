@@ -1,26 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import api from './services/api'
 
 import "./styles.css";
 
 function App() {
+  const [repos, setRepos] = useState([])
+
+  useEffect(() => {
+    api.get('repositories').then(repositories => setRepos(repositories.data))
+  }, [])
+
   async function handleAddRepository() {
-    // TODO
+    try {
+      const data = {
+        title: 'Conceitos ReactJS',
+        url: 'https://github.com/Teuuz1994/desafio03-conceitos-reactjs-gostack',
+        techs: ['ReactJS', 'Axios', 'NodeJS', 'Babel', 'Webpack']
+      }
+
+      const response = await api.post('repositories', data)
+      const newRepo = response.data
+      setRepos([...repos, newRepo])
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   async function handleRemoveRepository(id) {
-    // TODO
+    try {
+      await api.delete(`repositories/${id}`)
+      setRepos(repos.filter(repos => repos.id !== id))
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
     <div>
       <ul data-testid="repository-list">
-        <li>
-          Repositório 1
+        {repos.map(repo => (
+          <li key={repo.id}>
 
-          <button onClick={() => handleRemoveRepository(1)}>
-            Remover
+            <ul>
+              <li><a href={repo.url} target="_blank">{repo.title}</a></li>
+              <li>{repo.likes}</li>
+            </ul>
+
+            <button onClick={() => handleRemoveRepository(repo.id)}>
+              Remover
           </button>
-        </li>
+          </li>
+        ))}
       </ul>
 
       <button onClick={handleAddRepository}>Adicionar</button>

@@ -7,10 +7,10 @@
 <blockquote align="center">“Faça seu melhor, mas sempre com prazo de entrega”!</blockquote>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/rocketseat/bootcamp-gostack-desafios?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Teuuz1994/desafio03-conceitos-reactjs-gostack?color=%2304D361">
 
   <a href="https://rocketseat.com.br">
-    <img alt="Made by Rocketseat" src="https://img.shields.io/badge/made%20by-Rocketseat-%2304D361">
+    <img alt="Made by Teuuz1994" src="https://img.shields.io/badge/made%20by-Teuuz1994-%2304D361">
   </a>
 </p>
 
